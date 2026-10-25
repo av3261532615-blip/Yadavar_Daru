@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>یادآور دارو</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f0f7ff;
+      text-align: center;
+      padding: 25px;
+      color: #234;
+    }
+    .card {
+      background: white;
+      padding: 25px;
+      border-radius: 18px;
+      max-width: 400px;
+      margin: 30px auto;
+      box-shadow: 0 3px 12px #ccd;
+    }
+    input, button {
+      font: inherit;
+      padding: 12px;
+      margin: 8px;
+      border-radius: 10px;
+    }
+    input { width: 80%; border: 1px solid #aaa; }
+    button {
+      background: #1677d2;
+      color: white;
+      border: none;
+    }
+    #list { text-align: right; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>💊 یادآور دارو</h1>
+    <p>نام دارو و زمان مصرف را وارد کنید.</p>
+    <input id="medicine" placeholder="نام دارو">
+    <input id="time" type="time">
+    <button onclick="addMedicine()">ثبت دارو</button>
+    <div id="list"></div>
+  </div>
+  <script>
+    function addMedicine() {
+      const name = document.getElementById('medicine').value.trim();
+      const time = document.getElementById('time').value;
+      if (!name || !time) {
+        alert('لطفاً نام دارو و زمان مصرف را وارد کنید.');
+        return;
+      }
+      const item = document.createElement('p');
+      item.textContent = '💊 ' + name + ' — ساعت ' + time;
+      document.getElementById('list').appendChild(item);
+      document.getElementById('medicine').value = '';
+    }
+  </script>
+</body>
+</html>
